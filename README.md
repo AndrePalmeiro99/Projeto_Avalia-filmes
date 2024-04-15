@@ -1,8 +1,9 @@
-# React + Vite
+# Projeto Avalia Filmes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de site sobre avaliações de filmes utilizando React e Vite
 
-Currently, two official plugins are available:
+Atualizações futuras:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Adição no serviço envio de imagens ou vídeos
+- Ajustes no design da página, com finalidade de uma aparência mais confortável e bem apresentável
+- Mais ideias para a página,como criação de comunidades para debaterem sobre filmes
