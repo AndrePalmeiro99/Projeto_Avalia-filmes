@@ -7,22 +7,24 @@ import ListaAvaliacoes2 from "../componentes/avaliacoes/ListaAvaliacoes2";
 export default function Avaliacoes() {
 
     const [avaliacoes, setAvaliacoes] = useState([]);
-    const [avaliacaoId, setAvaliacaoId] = useState("");
+    const [idEmEdicao, setIdEmEdicao] = useState("");
 
     useEffect(() => {
         async function fetchData() {
-            let data = await listarAvaliacoes();
-            setAvaliacoes(data);
+            if (idEmEdicao === "" || avaliacoes.filter((item) => item.id === idEmEdicao).length === 0) {
+                let data = await listarAvaliacoes();
+                setAvaliacoes(data);
+            }
         }
 
         fetchData();
-    }, [avaliacaoId]);
+    }, [idEmEdicao]);
 
     return (
         <div>
             <h2 className="titulo">Deixe aqui sua avaliação sobre um filme</h2>
-            <FormAvaliacao setAvaliacaoId={setAvaliacaoId}/>
-            <ListaAvaliacoes2 avaliacoes={avaliacoes} />
+            <FormAvaliacao idEmEdicao={idEmEdicao} setIdEmEdicao={setIdEmEdicao} />
+            <ListaAvaliacoes2 avaliacoes={avaliacoes} setIdEmEdicao={setIdEmEdicao} />
         </div>
     )
 }

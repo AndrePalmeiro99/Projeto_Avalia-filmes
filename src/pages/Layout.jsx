@@ -12,7 +12,7 @@ export default function Layout() {
             {usuario.id &&
                 <div>
                     <nav>
-                        <div className="max-w-screen-xl px-4 py-3 mx-auto">
+                        <div className="px-4 py-3 mx-auto">
                             <div className="flex items-center">
                                 <ul>
                                     <li>

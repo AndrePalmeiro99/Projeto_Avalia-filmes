@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from 'react-data-table-component';
 
-export default function ListaAvaliacoes2({ avaliacoes = [] }) {
+export default function ListaAvaliacoes2({ avaliacoes = [], setIdEmEdicao }) {
 
     const colunas = [
         {
@@ -10,8 +10,8 @@ export default function ListaAvaliacoes2({ avaliacoes = [] }) {
             sortable: true,
         },
         {
-            name: 'categoria',
-            selector: row => row.categoria,
+            name: 'descrição',
+            selector: row => row.descricao,
         },
         {
             name: 'NOTA',
@@ -21,22 +21,31 @@ export default function ListaAvaliacoes2({ avaliacoes = [] }) {
 
     const opcoes = { rowsPerPageText: 'Linhas por página:', rangeSeparatorText: 'de' };
 
-    function handleRowSelect({selectedRows}) {
-        console.log(selectedRows[0]?.id);
+    async function handleChange({selectedRows}) {
+        const id = selectedRows[0]?.id;
+        if(id) {
+            setIdEmEdicao(id);
+        } else {
+            setIdEmEdicao("");
+        }        
     }
 
     return (
         <DataTable
-            columns={colunas}
-            data={avaliacoes}
-            pagination
-            paginationPerPage={10}
-            dense
-            responsive
-            striped
-            paginationComponentOptions={opcoes}
-            defaultSortFieldId={1}
-            onSelectedRowsChange={handleRowSelect}
+        columns={colunas}
+        data={avaliacoes}
+        pagination
+        paginationPerPage={5}
+        dense
+        responsive
+        striped
+        paginationComponentOptions={opcoes}
+        noDataComponent="Cadastro Vazio"
+        defaultSortFieldId={1}
+        selectableRows
+        selectableRowsHighlight
+        selectableRowsSingle
+        onSelectedRowsChange={handleChange}
         />
     )
 }
